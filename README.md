@@ -54,7 +54,8 @@ El proyecto forma parte de la **Tarea Práctica 1** de la asignatura *Modelos de
 ```r
 install.packages(c("zoo", "imputeTS", "ggplot2", "dplyr", 
                    "tidyr", "tseries", "forecast"))
-## 📁 Entregables del Proyecto
+
+### 📁 Entregables del Proyecto
 
 A continuación, se describen los principales entregables que componen este análisis de la **Línea 3 del Metrobús CDMX**, incluyendo el código fuente, los datos y el reporte generado.
 
