@@ -49,12 +49,14 @@ El proyecto forma parte de la **Tarea Práctica 1** de la asignatura *Modelos de
 - **Tendencia:** Análisis de crecimiento o decrecimiento en el período.
 
 ## 📁 Entregables del Proyecto
-A continuación, se describen los principales entregables que componen este análisis de la Línea 3 del Metrobús CDMX, incluyendo el código fuente, los datos y el reporte generado.
 
-Entregable	Descripción	Formato / Archivo	Enlace Directo
-💻 Script de Análisis	Código fuente en R que realiza todo el proceso: carga de datos, filtrado de la Línea 3, imputación lineal de valores faltantes, detección de outliers mediante STL, winsorización, agregación mensual, descomposición de la serie, pruebas de estacionariedad (ADF) y generación de visualizaciones (ACF, PACF, series diarias y mensuales).	R Script	🔗 Ver Código
-📊 Datos Analizados	Conjunto de datos original de afluencia del Metrobús. El script procesa este archivo para filtrar y analizar específicamente los datos de la Línea 3 en el período 2017-2020, creando las series diarias y mensuales utilizadas en el análisis.	CSV	🔗 Ver Datos
-📈 Reporte Generado	Documento PDF que presenta los resultados del análisis de la Línea 3. Incluye todas las gráficas generadas (serie diaria con outliers, comparativa diario vs. mensual, componentes de tendencia y estacionalidad, y funciones de autocorrelación ACF/PACF) junto con la interpretación de los hallazgos y las conclusiones del estudio.	PDF	🔗 Ver Reporte
+A continuación, se describen los principales entregables que componen este análisis de la **Línea 3 del Metrobús CDMX**, incluyendo el código fuente, los datos y el reporte generado.
+
+| Entregable | Descripción | Formato / Archivo | Enlace Directo |
+|:---|:---|:---|:---|
+| **💻 Script de Análisis** | Código fuente en R que realiza todo el proceso: carga de datos, filtrado de la Línea 3, imputación lineal de valores faltantes, detección de outliers mediante STL, winsorización, agregación mensual, descomposición de la serie, pruebas de estacionariedad (ADF) y generación de visualizaciones (ACF, PACF, series diarias y mensuales). | `R Script` | [🔗 Ver Código](https://raw.githubusercontent.com/Arwen333/Afluencia-Linea-3/refs/heads/main/Analisis%20Afluencia.R) |
+| **📊 Datos Analizados** | Conjunto de datos original de afluencia del Metrobús. El script procesa este archivo para filtrar y analizar específicamente los datos de la Línea 3 en el período 2017-2020, creando las series diarias y mensuales utilizadas en el análisis. | `CSV` | [🔗 Ver Datos](https://raw.githubusercontent.com/Arwen333/Afluencia-Linea-3/refs/heads/main/afluenciamb_simple_01_2026.csv) |
+| **📈 Reporte Generado** | Documento PDF que presenta los resultados del análisis de la Línea 3. Incluye todas las gráficas generadas (serie diaria con outliers, comparativa diario vs. mensual, componentes de tendencia y estacionalidad, y funciones de autocorrelación ACF/PACF) junto con la interpretación de los hallazgos y las conclusiones del estudio. | `PDF` | [🔗 Ver Reporte](https://github.com/Arwen333/Afluencia-Linea-3/blob/main/An%C3%A1lis-de-Series-de-Tiempo.pdf) |
 
 
 ## 📬 Contacto
