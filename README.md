@@ -49,65 +49,19 @@ El proyecto forma parte de la **Tarea Práctica 1** de la asignatura *Modelos de
 - **Tendencia:** Análisis de crecimiento o decrecimiento en el período.
 
 ## 📁 Entregables del Proyecto
+A continuación, se describen los principales entregables que componen este análisis de la Línea 3 del Metrobús CDMX, incluyendo el código fuente, los datos y el reporte generado.
 
-### 💻 Código Fuente
-El script principal que realiza todo el análisis:
+Entregable	Descripción	Formato / Archivo	Enlace Directo
+💻 Script de Análisis	Código fuente en R que realiza todo el proceso: carga de datos, filtrado de la Línea 3, imputación lineal de valores faltantes, detección de outliers mediante STL, winsorización, agregación mensual, descomposición de la serie, pruebas de estacionariedad (ADF) y generación de visualizaciones (ACF, PACF, series diarias y mensuales).	R Script	🔗 Ver Código
+📊 Datos Analizados	Conjunto de datos original de afluencia del Metrobús. El script procesa este archivo para filtrar y analizar específicamente los datos de la Línea 3 en el período 2017-2020, creando las series diarias y mensuales utilizadas en el análisis.	CSV	🔗 Ver Datos
+📈 Reporte Generado	Documento PDF que presenta los resultados del análisis de la Línea 3. Incluye todas las gráficas generadas (serie diaria con outliers, comparativa diario vs. mensual, componentes de tendencia y estacionalidad, y funciones de autocorrelación ACF/PACF) junto con la interpretación de los hallazgos y las conclusiones del estudio.	PDF	🔗 Ver Reporte
 
-```r
-# Script: Análisis de Afluencia - Línea 3 del Metrobús CDMX
-# Autor: Arwen Yetzirah Ortiz N.
-# Descripción: Realiza limpieza, imputación, detección de outliers,
-#              análisis de estacionariedad, descomposición STL y visualizaciones
 
-# Carga de librerías
-library(zoo)
-library(imputeTS)
-library(ggplot2)
-library(dplyr)
-library(tidyr)
-library(tseries)
-library(forecast)
+## 📬 Contacto
+Autor: Arwen Yetzirah Ortiz N.
+Fecha de creación: 26/02/2026
+Última actualización: 01/03/2026
+Email: arwenort@ciencias.unam.mx
+Institución: Facultad de Ciencias, Universidad Nacional Autónoma de México (UNAM)
+Asignatura: Modelos de Supervivencia y Series de Tiempo
 
-# Cargar datos desde GitHub
-url_github <- "https://raw.githubusercontent.com/Arwen333/Afluencia-Linea-3/refs/heads/main/afluenciamb_simple_01_2026.csv"
-df <- read.csv(url_github, encoding = "UTF-8", stringsAsFactors = FALSE)
-
-# Filtrar Línea 3 y período 2017-2020
-df_linea3 <- df %>%
-  filter(linea == "Línea 3", anio >= 2017, anio <= 2020)
-
-# Crear serie diaria completa
-fechas_completas <- data.frame(fecha = seq(min(df_linea3$fecha), 
-                                           max(df_linea3$fecha), 
-                                           by = "day"))
-serie_diaria <- merge(fechas_completas, df_linea3[, c("fecha", "afluencia")], 
-                      by = "fecha", all.x = TRUE)
-
-# Imputación de valores faltantes
-serie_diaria$afluencia <- na.approx(serie_diaria$afluencia)
-
-# Detección de outliers con STL
-ts_diaria <- ts(serie_diaria$afluencia, frequency = 365)
-stl_fit <- stl(ts_diaria, s.window = "periodic", robust = TRUE)
-residuos <- stl_fit$time.series[, "remainder"]
-limite <- 3 * sd(residuos, na.rm = TRUE)
-serie_diaria$outlier <- abs(residuos) > limite
-
-# Winsorización
-p1 <- quantile(serie_diaria$afluencia, 0.01)
-p99 <- quantile(serie_diaria$afluencia, 0.99)
-serie_diaria$afluencia <- pmax(pmin(serie_diaria$afluencia, p99), p1)
-
-# Agregación mensual
-serie_mensual <- serie_diaria %>%
-  mutate(mes = as.Date(format(fecha, "%Y-%m-01"))) %>%
-  group_by(mes) %>%
-  summarise(afluencia = mean(afluencia))
-
-# Prueba de estacionariedad ADF
-ts_mensual <- ts(serie_mensual$afluencia, frequency = 12, 
-                 start = c(2017, 1))
-adf.test(ts_mensual)
-
-# Generar visualizaciones
-# ... (código de gráficos)
