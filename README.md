@@ -62,7 +62,7 @@ A continuación, se describen los principales entregables que componen este aná
 ## 📬 Contacto
 Autor: Arwen Yetzirah Ortiz N.
 Fecha de creación: 26/02/2026
-Última actualización: 01/03/2026
+Última actualización: 28/03/2026
 Email: arwenort@ciencias.unam.mx
 Institución: Facultad de Ciencias, Universidad Nacional Autónoma de México (UNAM)
 Asignatura: Modelos de Supervivencia y Series de Tiempo
